@@ -10,6 +10,8 @@
 <meta property="og:title" content="FESCO Bill Online Check November 2026 — 14-Digit Reference No.">
 <meta property="og:description" content="Check your FESCO bill online with your 14-digit reference number or 10-digit customer ID. Free duplicate bill, calculator, payment guide and November 2026 rates.">
 <meta property="og:url" content="https://checkfescobill.pk/">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="apple-touch-icon" href="assets/favicon.svg">
 <link rel="stylesheet" href="assets/style.css">
 <script type="application/ld+json">
 {
@@ -83,9 +85,7 @@
 <header class="site-header">
   <div class="header-inner">
     <a class="logo" href="./" aria-label="FESCO Bill Online — home">
-      <span class="logo-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 2 4.5 13.5H11L9.5 22 19 10h-6.5L13 2Z" fill="#fff"/></svg>
-      </span>
+      <img class="logo-img" src="assets/logo.svg" alt="FESCO Bill Online" width="38" height="38">
       <span class="logo-text">FESCO Bill Online<small>Check • Calculate • Pay</small></span>
     </a>
     <nav class="main-nav" aria-label="Main navigation">
@@ -107,12 +107,17 @@
     <div class="checker" id="checker">
       <h2>Check your FESCO bill now</h2>
       <p>Enter your reference number below and press Check Bill — your bill opens directly on the official PITC portal in a new tab. We only check the format on your own device — your number is never sent to or stored on our servers.</p>
+      <div class="conn-tabs" role="tablist" aria-label="Connection type">
+        <button type="button" id="conn-general" class="active" role="tab" aria-selected="true">General<small>Domestic / Commercial</small></button>
+        <button type="button" id="conn-industrial" role="tab" aria-selected="false">Industrial<small>Industrial connections</small></button>
+      </div>
       <form class="checker-form" id="checker-form" novalidate>
         <div class="grow">
           <label for="ref-input">14-digit Reference No. or 10-digit Customer ID</label>
           <input type="text" id="ref-input" name="reference" inputmode="numeric" autocomplete="off" placeholder="e.g. 01 12345 6789012 3" maxlength="20" aria-describedby="ref-error">
+          <span class="ur-chip">Tip: add U (urban) or R (rural) if it is shown on your bill</span>
         </div>
-        <button class="btn" type="submit">Check Bill</button>
+        <button class="btn btn-cta" type="submit">Check Bill</button>
       </form>
       <p class="field-error" id="ref-error" role="alert"></p>
       <div class="checker-result" id="checker-result">
@@ -123,7 +128,10 @@
           <button class="btn" type="button" id="open-general">Open General Bill →</button>
           <button class="btn btn-secondary" type="button" id="open-industrial">Open Industrial Bill</button>
           <button class="btn btn-secondary" type="button" id="copy-ref">Copy number</button>
+          <button class="btn btn-secondary" type="button" id="sms-8118">SMS to 8118</button>
+          <a class="btn btn-secondary" id="wa-share" href="https://wa.me/?text=Check%20your%20FESCO%20bill%20online%20free%20%E2%80%94%20https%3A%2F%2Fcheckfescobill.pk%2F" target="_blank" rel="noopener">Share on WhatsApp</a>
         </div>
+        <p class="checker-note" id="sms-note" style="display:none">Copied — paste it in an SMS to 8118</p>
         <label class="save-row">
           <input type="checkbox" id="save-ref"> Save my reference number on this device only (so you do not have to type it next time)
         </label>
@@ -131,6 +139,32 @@
       </div>
       <p class="checker-note">Your bill is shown on the official PITC portal (bill.pitc.com.pk) — not on this website. That is the only official place to view your real bill.</p>
     </div>
+    <ul class="trust-bar" aria-label="Why use this site">
+      <li>Free — no fee</li>
+      <li>No login needed</li>
+      <li>Official PITC portal</li>
+      <li>Updated Nov 2026</li>
+      <li>S.R.O. 279(I)/2026 verified</li>
+    </ul>
+
+    <section class="estimator" id="estimator" aria-label="Quick bill estimator">
+      <h2>Quick bill estimator</h2>
+      <p>Drag the slider to your monthly units and see an instant estimate. Rates per NEPRA S.R.O. 279(I)/2026.</p>
+      <div class="est-pills" role="group" aria-label="Consumer type">
+        <button type="button" data-cat="unprotected" class="active" aria-pressed="true">Unprotected</button>
+        <button type="button" data-cat="protected" aria-pressed="false">Protected</button>
+        <button type="button" data-cat="lifeline" aria-pressed="false">Lifeline</button>
+      </div>
+      <div class="est-slider-row">
+        <label for="est-units">Units used</label>
+        <input type="range" id="est-units" min="0" max="1000" step="1" value="200">
+        <input type="number" id="est-units-num" min="0" max="1000" step="1" value="200" aria-label="Units used (number)">
+        <span>units</span>
+      </div>
+      <p class="est-total"><span id="est-total">Rs 7,585.04</span><small id="est-slab">Unprotected — 101–200 units @ Rs 28.91</small></p>
+      <p class="est-lines"><span id="est-energy">Energy: Rs 5,782.00</span><span id="est-fc">FC surcharge: Rs 646.00</span><span id="est-gst">GST (18%): Rs 1,157.04</span></p>
+      <p class="est-note">Estimate only — excludes fixed charge and FPA. Your official bill may differ. <a href="fesco-bill-calculator/">Full breakdown → calculator</a></p>
+    </section>
   </div>
 </section>
 
@@ -150,6 +184,27 @@
       <p><strong>Note on U and R:</strong> some FESCO bills show a <strong>U</strong> (urban) or <strong>R</strong> (rural) letter after the reference number. Our checker accepts the number with or without the letter — the bill opens directly either way.</p>
     </div>
 
+    <figure class="bill-diagram">
+      <div class="bd-head"><span>FESCO — Electricity Bill</span><span>November 2026</span></div>
+      <div class="bd-body">
+        <div class="bd-ref">
+          <strong>14-digit Reference No. here</strong>
+          <span class="bd-num">01 12345 6789012 3</span>
+          <p style="margin:6px 0 0;font-size:.9rem">Top-left of your bill, just below the FESCO logo. Some bills add a U (urban) or R (rural) after it.</p>
+        </div>
+        <div class="bd-rows">
+          <p>Consumer name &amp; address</p>
+          <div class="bd-bar mid"></div>
+          <div class="bd-bar short"></div>
+          <p>Meter reading &amp; units used</p>
+          <div class="bd-bar"></div>
+          <p>Amount due &amp; due date</p>
+          <div class="bd-bar short"></div>
+        </div>
+      </div>
+      <figcaption>Can’t find it? Use the 10-digit Customer ID instead — it is printed on the same bill.</figcaption>
+    </figure>
+
     <h2>What you need — and what does not work</h2>
     <p>Bill checking in Pakistan works on two numbers only:</p>
     <ul>
@@ -161,26 +216,32 @@
     <h2>FESCO bill tools and guides</h2>
     <div class="card-grid">
       <a class="card" href="fesco-bill-calculator/">
+        <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="12" x2="9" y2="12"/><line x1="12" y1="12" x2="12" y2="12"/><line x1="15" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="15" y2="16"/></svg></span>
         <h3>Bill Calculator</h3>
         <p>Estimate your bill from units used — protected, unprotected, lifeline and TOU rates, with FPA, surcharge and 18% GST. <span class="card-link">Calculate →</span></p>
       </a>
       <a class="card" href="fesco-duplicate-bill/">
+        <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7l-5-5Z"/><path d="M14 2v5h5"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg></span>
         <h3>Duplicate Bill</h3>
         <p>Lost your bill? Download and print a duplicate copy from the official portal in two minutes. <span class="card-link">Get duplicate →</span></p>
       </a>
       <a class="card" href="fesco-bill-payment/">
+        <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/><line x1="6" y1="15" x2="10" y2="15"/></svg></span>
         <h3>Bill Payment</h3>
         <p>Pay by JazzCash, Easypaisa, bank app, ATM or branch — step-by-step for every method. <span class="card-link">Pay now →</span></p>
       </a>
       <a class="card" href="fesco-previous-bill/">
+        <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
         <h3>Previous Bill</h3>
         <p>See your last 12 months of bills and track how your usage — and your bill — has changed. <span class="card-link">View history →</span></p>
       </a>
       <a class="card" href="fesco-unit-rate/">
+        <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="20" x2="20" y2="20"/><line x1="6" y1="16" x2="6" y2="20"/><line x1="11" y1="11" x2="11" y2="20"/><line x1="16" y1="6" x2="16" y2="20"/></svg></span>
         <h3>Unit Rate — November 2026</h3>
         <p>Full FESCO tariff table: lifeline, protected, unprotected and TOU rates per unit. <span class="card-link">See rates →</span></p>
       </a>
       <a class="card" href="how-to-read-fesco-bill/">
+        <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15Z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg></span>
         <h3>How to Read Your Bill</h3>
         <p>Every line on your bill explained — FPA, QTA, FC surcharge, GST, fixed charges and more. <span class="card-link">Read guide →</span></p>
       </a>
@@ -229,18 +290,30 @@
 
     <h2>Frequently asked questions</h2>
     <div class="faq">
-      <h3>Can I check FESCO bill by CNIC?</h3>
-      <p>No. FESCO bills cannot be checked by CNIC number, name, address or meter number. The official PITC portal only accepts a 14-digit Reference Number or a 10-digit Customer ID.</p>
-      <h3>Where is the reference number on a FESCO bill?</h3>
-      <p>At the top-left of every FESCO bill, just below the FESCO logo. It is also printed on the payment counterfoil at the bottom. Some bills show a U (urban) or R (rural) letter next to it — the portal asks you to select U or R separately.</p>
-      <h3>Is checking my FESCO bill online free?</h3>
-      <p>Yes — the official PITC portal is free, with no login needed, and this website is free too. We never charge for the checker, the calculator or any guide.</p>
-      <h3>How can I check my FESCO bill by SMS?</h3>
-      <p>Text your 14-digit reference number to 8118. You will receive a reply with your current bill amount and due date. Standard SMS charges from your mobile network apply.</p>
-      <h3>What if my FESCO bill is wrong or too high?</h3>
-      <p>Compare the meter reading on the bill with your physical meter first. If they do not match, call 118 (toll-free) or lodge a complaint at ccms.pitc.com.pk. You can also visit your nearest FESCO subdivision office with the bill and your CNIC.</p>
-      <h3>Can I download a duplicate FESCO bill?</h3>
-      <p>Yes. Enter your reference number in the checker above and click “Open General Bill” — your latest bill opens directly on the official PITC portal with print and download options. Save it as a PDF or print it — it works as a duplicate bill for payment.</p>
+      <details>
+        <summary>Can I check FESCO bill by CNIC?</summary>
+        <p>No. FESCO bills cannot be checked by CNIC number, name, address or meter number. The official PITC portal only accepts a 14-digit Reference Number or a 10-digit Customer ID.</p>
+      </details>
+      <details>
+        <summary>Where is the reference number on a FESCO bill?</summary>
+        <p>At the top-left of every FESCO bill, just below the FESCO logo. It is also printed on the payment counterfoil at the bottom. Some bills show a U (urban) or R (rural) letter next to it — the portal asks you to select U or R separately.</p>
+      </details>
+      <details>
+        <summary>Is checking my FESCO bill online free?</summary>
+        <p>Yes — the official PITC portal is free, with no login needed, and this website is free too. We never charge for the checker, the calculator or any guide.</p>
+      </details>
+      <details>
+        <summary>How can I check my FESCO bill by SMS?</summary>
+        <p>Text your 14-digit reference number to 8118. You will receive a reply with your current bill amount and due date. Standard SMS charges from your mobile network apply.</p>
+      </details>
+      <details>
+        <summary>What if my FESCO bill is wrong or too high?</summary>
+        <p>Compare the meter reading on the bill with your physical meter first. If they do not match, call 118 (toll-free) or lodge a complaint at ccms.pitc.com.pk. You can also visit your nearest FESCO subdivision office with the bill and your CNIC.</p>
+      </details>
+      <details>
+        <summary>Can I download a duplicate FESCO bill?</summary>
+        <p>Yes. Enter your reference number in the checker above and click “Open General Bill” — your latest bill opens directly on the official PITC portal with print and download options. Save it as a PDF or print it — it works as a duplicate bill for payment.</p>
+      </details>
     </div>
 
     <div class="related">
@@ -298,6 +371,11 @@
   </div>
 </footer>
 
+<nav class="mobile-bar" aria-label="Quick links">
+  <a href="#checker">Check Bill</a>
+  <a href="fesco-bill-calculator/">Calculator</a>
+</nav>
+
 <script>
 (function(){
   var form=document.getElementById('checker-form');
@@ -310,6 +388,16 @@
   var savedNote=document.getElementById('saved-note');
   var clearBtn=document.getElementById('clear-ref');
   var KEY='fesco_ref';
+  var connType='general';
+  var tabG=document.getElementById('conn-general');
+  var tabI=document.getElementById('conn-industrial');
+  function setConn(kind){
+    connType=kind;
+    if(tabG){tabG.classList.toggle('active',kind==='general');tabG.setAttribute('aria-selected',kind==='general'?'true':'false');}
+    if(tabI){tabI.classList.toggle('active',kind==='industrial');tabI.setAttribute('aria-selected',kind==='industrial'?'true':'false');}
+  }
+  if(tabG){tabG.addEventListener('click',function(){setConn('general');});}
+  if(tabI){tabI.addEventListener('click',function(){setConn('industrial');});}
   function normalize(v){return v.replace(/[\s\-]/g,'').toUpperCase();}
   function validate(v){
     var n=normalize(v),suffix='';
@@ -363,7 +451,7 @@
     if(saveBox.checked){
       try{localStorage.setItem(KEY,v.num+(v.suffix?v.suffix:''));savedNote.style.display='block';}catch(e){}
     }
-    openBill('general',v);
+    openBill(connType,v);
   });
   copyBtn.addEventListener('click',function(){
     var t=refOut.textContent.replace(/^[^:]+:\s*/,'');
@@ -376,10 +464,75 @@
       document.body.removeChild(ta);done();
     }
   });
+  var smsBtn=document.getElementById('sms-8118');
+  var smsNote=document.getElementById('sms-note');
+  if(smsBtn){smsBtn.addEventListener('click',function(){
+    var t=(refOut.textContent||'').replace(/^[^:]+:\s*/,'')||normalize(input.value);
+    if(!t){err.textContent='First enter your reference number above, then tap SMS to 8118.';err.classList.add('show');input.focus();return;}
+    function smsDone(){
+      smsBtn.textContent='Copied — paste it in an SMS to 8118';
+      if(smsNote){smsNote.style.display='block';}
+      setTimeout(function(){smsBtn.textContent='SMS to 8118';},3000);
+    }
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(smsDone,function(){smsFallback();});}
+    else{smsFallback();}
+    function smsFallback(){
+      var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();
+      try{document.execCommand('copy');}catch(e){}
+      document.body.removeChild(ta);smsDone();
+    }
+  });}
   if(clearBtn){clearBtn.addEventListener('click',function(){
     try{localStorage.removeItem(KEY);}catch(e){}
     input.value='';savedNote.style.display='none';result.classList.remove('show');input.focus();
   });}
+
+  /* Quick bill estimator — same S.R.O. 279(I)/2026 slab rates as the calculator.
+     Energy + FC surcharge, then 18% GST. Fixed charge and FPA excluded (labelled). */
+  var EST={lifeline:[{max:50,rate:3.95},{max:100,rate:7.74}],protected:[{max:100,rate:10.54},{max:200,rate:13.01}],unprotected:[{max:100,rate:22.44},{max:200,rate:28.91},{max:300,rate:33.10},{max:400,rate:36.46},{max:500,rate:38.95},{max:600,rate:40.22},{max:700,rate:41.85},{max:Infinity,rate:47.20}]};
+  var EST_FC={lifeline:0,protected:1.43,unprotected:3.23};
+  var EST_LABEL={lifeline:'Lifeline',protected:'Protected',unprotected:'Unprotected'};
+  var estCat='unprotected';
+  var estSlider=document.getElementById('est-units');
+  var estNum=document.getElementById('est-units-num');
+  function fmtRs(n){return 'Rs '+n.toLocaleString('en-PK',{minimumFractionDigits:2,maximumFractionDigits:2});}
+  function estSlab(cat,units){
+    var slabs=EST[cat],prev=0;
+    for(var i=0;i<slabs.length;i++){
+      if(units<=slabs[i].max)return{rate:slabs[i].rate,range:(slabs[i].max===Infinity?'700+':(prev+1)+'\u2013'+slabs[i].max)};
+      prev=slabs[i].max;
+    }
+    return{rate:slabs[slabs.length-1].rate,range:'700+'};
+  }
+  function updateEst(){
+    if(!estSlider)return;
+    var units=Math.max(0,Math.min(1000,Math.floor(Number(estSlider.value)||0)));
+    if(Number(estNum.value)!==units)estNum.value=units;
+    if(Number(estSlider.value)!==units)estSlider.value=units;
+    var slab=estSlab(estCat,units);
+    var energy=units*slab.rate;
+    var fc=units*EST_FC[estCat];
+    var sub=energy+fc;
+    var gst=sub*0.18;
+    var total=sub+gst;
+    var el=function(id){return document.getElementById(id);};
+    if(el('est-total'))el('est-total').textContent=fmtRs(total);
+    if(el('est-slab'))el('est-slab').textContent=EST_LABEL[estCat]+' \u2014 '+slab.range+' units @ Rs '+slab.rate.toFixed(2);
+    if(el('est-energy'))el('est-energy').textContent='Energy: '+fmtRs(energy);
+    if(el('est-fc'))el('est-fc').textContent='FC surcharge: '+fmtRs(fc);
+    if(el('est-gst'))el('est-gst').textContent='GST (18%): '+fmtRs(gst);
+  }
+  if(estSlider){
+    estSlider.addEventListener('input',updateEst);
+    if(estNum)estNum.addEventListener('input',function(){estSlider.value=Math.max(0,Math.min(1000,Math.floor(Number(estNum.value)||0)));updateEst();});
+    var pills=document.querySelectorAll('.est-pills button');
+    pills.forEach(function(b){b.addEventListener('click',function(){
+      estCat=b.getAttribute('data-cat');
+      pills.forEach(function(x){var on=x===b;x.classList.toggle('active',on);x.setAttribute('aria-pressed',on?'true':'false');});
+      updateEst();
+    });});
+    updateEst();
+  }
 })();
 </script>
 </body>

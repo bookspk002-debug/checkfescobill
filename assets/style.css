@@ -1,6 +1,9 @@
 /* FESCO Bill Online — shared stylesheet. Mobile-first, no frameworks. */
 :root{
   --green:#0b6e3f;
+  --green-bright:#0e8a4f;
+  --amber:#f59e0b;
+  --amber-dark:#b45309;
   --green-dark:#07522e;
   --green-light:#e9f5ee;
   --green-mid:#d4eadb;
@@ -37,6 +40,7 @@ a:hover{color:var(--green-dark)}
   background:#fff;
   border-bottom:3px solid var(--green);
   position:sticky;top:0;z-index:50;
+  box-shadow:0 2px 14px rgba(7,82,46,.10);
 }
 .header-inner{
   display:flex;align-items:center;gap:12px;
@@ -44,11 +48,7 @@ a:hover{color:var(--green-dark)}
   flex-wrap:wrap;
 }
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
-.logo-mark{
-  width:38px;height:38px;flex:0 0 38px;border-radius:9px;
-  background:var(--green);display:flex;align-items:center;justify-content:center;
-}
-.logo-mark svg{width:22px;height:22px}
+.logo-img{width:38px;height:38px;flex:0 0 38px;border-radius:9px;display:block}
 .logo-text{font-weight:800;font-size:1.15rem;line-height:1.15;color:var(--green-dark)}
 .logo-text small{display:block;font-weight:600;font-size:.72rem;color:var(--muted);letter-spacing:.02em}
 .main-nav{margin-left:auto;display:flex;gap:2px;flex-wrap:wrap}
@@ -60,12 +60,12 @@ a:hover{color:var(--green-dark)}
 .main-nav a.active{background:var(--green);color:#fff}
 
 /* ---------- hero / checker ---------- */
-.hero{background:linear-gradient(180deg,var(--green-light),#fff);padding:26px 0 8px}
-.hero h1{margin:0 0 8px;font-size:1.7rem;line-height:1.25;color:var(--green-dark)}
+.hero{background:linear-gradient(180deg,#d9efe1 0%,var(--green-light) 45%,#fff 100%),radial-gradient(circle at 15% 10%,rgba(11,110,63,.08) 0 2px,transparent 3px);background-size:auto,26px 26px;padding:30px 0 10px}
+.hero h1{margin:0 0 10px;font-size:1.85rem;line-height:1.2;color:var(--green-dark);font-weight:800;letter-spacing:-.01em}
 .hero .lede{font-size:1.05rem;color:#33413a;margin:0 0 18px}
 .checker{
-  background:#fff;border:2px solid var(--green);border-radius:var(--radius);
-  padding:20px;margin:0 0 10px;box-shadow:0 4px 18px rgba(11,110,63,.10);
+  background:#fff;border:2px solid var(--green);border-radius:16px;
+  padding:22px;margin:0 0 10px;box-shadow:0 10px 30px rgba(11,110,63,.16),0 2px 6px rgba(7,82,46,.08);
 }
 .checker h2{margin:0 0 4px;font-size:1.2rem;color:var(--green-dark)}
 .checker p{margin:0 0 14px;color:var(--muted);font-size:.95rem}
@@ -75,15 +75,17 @@ a:hover{color:var(--green-dark)}
   width:100%;padding:13px 14px;font-size:1.1rem;letter-spacing:.06em;
   border:2px solid var(--border);border-radius:9px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
 }
-.checker-form input[type=text]:focus{outline:3px solid var(--green-mid);border-color:var(--green)}
+.checker-form input[type=text]:focus{outline:3px solid var(--green-mid);border-color:var(--green);box-shadow:0 0 0 4px rgba(11,110,63,.15)}
 .field-error{color:var(--red);font-weight:600;font-size:.93rem;display:none;margin:0}
 .field-error.show{display:block}
 .btn{
   display:inline-block;background:var(--green);color:#fff;border:0;border-radius:9px;
   padding:13px 22px;font-size:1.02rem;font-weight:700;cursor:pointer;
-  text-decoration:none;text-align:center;
+  text-decoration:none;text-align:center;transition:transform .15s ease,box-shadow .15s ease,background .15s ease;
 }
-.btn:hover{background:var(--green-dark);color:#fff}
+.btn:hover{background:var(--green-dark);color:#fff;transform:translateY(-2px);box-shadow:0 6px 16px rgba(7,82,46,.25)}
+.btn-cta{background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#1c1c1c;box-shadow:0 4px 14px rgba(245,158,11,.45)}
+.btn-cta:hover{background:linear-gradient(135deg,#f59e0b,#d97706);color:#1c1c1c;transform:translateY(-2px);box-shadow:0 8px 20px rgba(245,158,11,.5)}
 .btn-secondary{background:#fff;color:var(--green-dark);border:2px solid var(--green)}
 .btn-secondary:hover{background:var(--green-light)}
 .btn-block{width:100%}
@@ -154,7 +156,9 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
   border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;
   background:#fff;text-decoration:none;color:var(--ink);display:block;
 }
-.card:hover{border-color:var(--green);box-shadow:0 3px 14px rgba(11,110,63,.10)}
+.card:hover{border-color:var(--green);box-shadow:0 8px 22px rgba(11,110,63,.14);transform:translateY(-3px)}
+.card{transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
+tr:hover td{background:#eef7f1}
 .card h3{margin:0 0 6px;color:var(--green-dark)}
 .card p{margin:0;color:var(--muted);font-size:.95rem}
 .card .card-link{color:var(--green);font-weight:700;font-size:.92rem}
@@ -230,15 +234,80 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
   .checker-form .grow{flex:1}
   .checker-form .btn{width:auto;white-space:nowrap}
   h1{font-size:2rem}
-  .hero h1{font-size:2.1rem}
+  .hero h1{font-size:2.35rem}
 }
 @media (min-width:900px){
   .card-grid{grid-template-columns:1fr 1fr 1fr}
 }
 
+
+/* ---------- trust bar ---------- */
+.trust-bar{list-style:none;margin:14px 0 6px;padding:0;display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:center}
+.trust-bar li{font-size:.88rem;font-weight:700;color:var(--green-dark);display:flex;align-items:center;gap:6px}
+.trust-bar li::before{content:"";width:18px;height:18px;flex:0 0 18px;border-radius:50%;background:var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12.5 9.5 18 20 6.5'/%3E%3C/svg%3E") center/11px no-repeat}
+
+/* ---------- connection tabs / U-R chip ---------- */
+.conn-tabs{display:flex;gap:8px;margin:0 0 14px}
+.conn-tabs button{flex:1;padding:10px 12px;border:2px solid var(--border);border-radius:10px;background:var(--soft);font-weight:700;font-size:.95rem;color:var(--ink);cursor:pointer}
+.conn-tabs button.active{background:var(--green);border-color:var(--green);color:#fff}
+.conn-tabs button small{display:block;font-weight:600;font-size:.78rem;opacity:.85}
+.ur-chip{display:inline-block;margin-top:8px;font-size:.85rem;font-weight:600;color:var(--green-dark);background:var(--amber-bg);border:1px solid var(--amber-border);border-radius:999px;padding:4px 10px}
+
+/* ---------- estimator ---------- */
+.estimator{background:#fff;border:1px solid var(--border);border-radius:16px;padding:20px;margin:16px 0 10px;box-shadow:0 6px 22px rgba(7,82,46,.10)}
+.estimator h2{margin:0 0 4px}
+.estimator>p{color:var(--muted);font-size:.95rem}
+.est-pills{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 16px}
+.est-pills button{padding:9px 14px;border:2px solid var(--border);border-radius:999px;background:#fff;font-weight:700;font-size:.92rem;cursor:pointer;color:var(--ink)}
+.est-pills button.active{background:var(--green);border-color:var(--green);color:#fff}
+.est-slider-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.est-slider-row label{font-weight:700}
+.est-slider-row input[type=range]{flex:1;min-width:160px;accent-color:var(--green)}
+.est-slider-row input[type=number]{width:96px;padding:9px 10px;font-size:1.05rem;border:2px solid var(--border);border-radius:8px}
+.est-slider-row input[type=number]:focus{outline:3px solid var(--green-mid);border-color:var(--green)}
+.est-total{font-size:1.6rem;font-weight:800;color:var(--green-dark);background:var(--green-light);border-radius:10px;padding:12px 16px;margin:16px 0 8px}
+.est-total small{display:block;font-size:.85rem;font-weight:600;color:var(--muted)}
+.est-lines{font-size:.95rem;margin:0 0 8px}
+.est-lines span{display:inline-block;margin-right:14px}
+.est-note{font-size:.88rem;color:var(--muted)}
+
+/* ---------- bill diagram ---------- */
+.bill-diagram{border:1px solid var(--border);border-radius:14px;overflow:hidden;margin:18px 0;box-shadow:0 4px 16px rgba(7,82,46,.08)}
+.bill-diagram .bd-head{background:var(--green-dark);color:#fff;padding:12px 16px;font-weight:800;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.bill-diagram .bd-body{padding:16px;display:grid;grid-template-columns:1fr;gap:12px;background:#fff}
+.bill-diagram .bd-ref{border:3px dashed var(--amber);background:var(--amber-bg);border-radius:10px;padding:12px}
+.bill-diagram .bd-ref strong{display:block;color:var(--amber-dark)}
+.bill-diagram .bd-ref .bd-num{font-family:ui-monospace,Menlo,Consolas,monospace;font-weight:700;font-size:1.05rem;letter-spacing:.05em}
+.bill-diagram .bd-rows p{margin:0 0 8px;color:var(--muted);font-size:.92rem}
+.bill-diagram .bd-bar{height:10px;border-radius:5px;background:var(--soft);border:1px solid var(--border);margin-bottom:8px}
+.bill-diagram .bd-bar.short{width:60%}
+.bill-diagram .bd-bar.mid{width:80%}
+.bill-diagram figcaption{padding:10px 16px;background:var(--soft);font-size:.9rem;color:var(--muted);border-top:1px solid var(--border)}
+
+/* ---------- FAQ accordion ---------- */
+.faq details{border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin:0 0 10px;background:#fff}
+.faq details[open]{border-color:var(--green);box-shadow:0 3px 12px rgba(11,110,63,.08)}
+.faq summary{cursor:pointer;font-weight:700;color:var(--green-dark);font-size:1.02rem;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";float:right;font-weight:800;color:var(--green)}
+.faq details[open] summary::after{content:"\2212"}
+.faq details p{margin:10px 0 0;color:var(--ink)}
+
+/* ---------- card icons ---------- */
+.card-icon{display:inline-flex;width:42px;height:42px;border-radius:10px;background:var(--green-light);align-items:center;justify-content:center;margin-bottom:10px}
+.card-icon svg{width:24px;height:24px;stroke:var(--green-dark)}
+
+/* ---------- mobile sticky bar (homepage only) ---------- */
+.mobile-bar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;background:#fff;border-top:2px solid var(--green);box-shadow:0 -4px 16px rgba(7,82,46,.15);padding:8px 10px calc(8px + env(safe-area-inset-bottom));gap:10px}
+.mobile-bar a{flex:1;text-align:center;text-decoration:none;font-weight:800;padding:11px 8px;border-radius:9px}
+.mobile-bar a:first-child{background:var(--green);color:#fff}
+.mobile-bar a:last-child{background:var(--green-light);color:var(--green-dark)}
+@media (min-width:640px){.mobile-bar{display:none}}
+@media (max-width:639px){body{padding-bottom:64px}}
+
 /* ---------- print ---------- */
 @media print{
-  .site-header,.site-footer,.main-nav,.checker-form,.result-actions,.related{display:none}
+  .site-header,.site-footer,.main-nav,.checker-form,.result-actions,.related,.mobile-bar,.trust-bar,.estimator{display:none}
   body{font-size:12pt}
   .checker{border:1px solid #999;box-shadow:none}
 }
