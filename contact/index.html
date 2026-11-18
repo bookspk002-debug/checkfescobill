@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact FESCO Bill Online — November 2026</title>
+<meta name="description" content="Contact FESCO Bill Online. For problems with your own bill, contact FESCO on helpline 118 or fesco.com.pk — this website cannot access your bill. For feedback or corrections to this website, use the form on this page.">
+<link rel="canonical" href="https://checkfescobill.pk/contact/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Contact FESCO Bill Online — November 2026">
+<meta property="og:description" content="For problems with your own FESCO bill, contact FESCO on helpline 118. For feedback or corrections to this website, use the form on this page.">
+<meta property="og:url" content="https://checkfescobill.pk/contact/">
+<link rel="stylesheet" href="../assets/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://checkfescobill.pk/" },
+        { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://checkfescobill.pk/contact/" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can this website fix a problem with my FESCO bill?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. This website cannot access your bill, change it or fix it. For a wrong amount, a missing bill, a complaint, a new connection or load shedding, contact FESCO directly on helpline 118 (toll-free) or through fesco.com.pk." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the FESCO helpline number?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The FESCO helpline is 118 (toll-free). You can also use the official FESCO website at fesco.com.pk and the complaints portal at ccms.pitc.com.pk." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the contact form on this page send my message?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. The form on this page is not connected to an inbox yet, so it does not send or deliver your message anywhere. Do not send bill problems through it — contact FESCO on 118 instead." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="../" aria-label="FESCO Bill Online — home">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 2 4.5 13.5H11L9.5 22 19 10h-6.5L13 2Z" fill="#fff"/></svg>
+      </span>
+      <span class="logo-text">FESCO Bill Online<small>Check • Calculate • Pay</small></span>
+    </a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="../">Home</a>
+      <a href="../fesco-bill-calculator/">Calculator</a>
+      <a href="../fesco-unit-rate/">Unit Rate</a>
+      <a href="../fesco-bill-payment/">Payment</a>
+      <a href="../fesco-duplicate-bill/">Duplicate Bill</a>
+      <a href="../fesco-complaint/">Complaint</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <p class="breadcrumb"><a href="../">Home</a> › Contact</p>
+    <h1>Contact Us</h1>
+    <p class="lede">There are two different ways to get help, depending on what your question is about. Please read both below so your message reaches the right place.</p>
+    <p class="updated">Updated: November 2026</p>
+
+    <h2>If it is about your own bill — contact FESCO directly</h2>
+    <p>For anything about <strong>your</strong> bill, contact FESCO itself. That includes a wrong amount, a bill that never arrived, a complaint, a new connection, a meter problem or load shedding. This website cannot access your bill, change it or fix it, and it cannot check the status of a complaint for you.</p>
+    <ul>
+      <li><strong>FESCO helpline: 118</strong> (toll-free) — for bill queries, complaints and general help.</li>
+      <li><strong>Official FESCO website:</strong> <a href="https://www.fesco.com.pk">fesco.com.pk</a></li>
+      <li><strong>Complaints portal:</strong> <a href="https://ccms.pitc.com.pk">ccms.pitc.com.pk</a></li>
+      <li><strong>Official bill portal:</strong> <a href="https://bill.pitc.com.pk/fescobill">bill.pitc.com.pk/fescobill</a> — check your bill with your 14-digit Reference Number or 10-digit Customer ID.</li>
+    </ul>
+    <p>When you call 118, keep your 14-digit Reference Number from your bill nearby — FESCO will usually ask for it. Our <a href="../fesco-complaint/">complaint guide</a> explains what information to have ready before you call or file a complaint online.</p>
+
+    <div class="warning">
+      <p><strong>Please do not send bill problems through the form below.</strong> The form is not connected to an inbox and cannot reach FESCO. Bill problems should go to FESCO on 118.</p>
+    </div>
+
+    <h2>If it is about this website — use the form below</h2>
+    <p>Use the form below only for feedback or corrections to <strong>this website</strong> — for example, a rate that looks out of date, a broken link, a mistake on a page, or a suggestion for a guide that would help. Do not include your full reference number, CNIC number or other personal details in your message.</p>
+
+    <form class="contact-form" id="contact-form">
+      <label for="contact-name">Your name</label>
+      <input type="text" id="contact-name" name="name" required>
+      <label for="contact-email">Your email</label>
+      <input type="email" id="contact-email" name="email" required>
+      <label for="contact-message">Your message</label>
+      <textarea id="contact-message" name="message" required></textarea>
+      <p><button class="btn" type="submit">Send message</button></p>
+      <div class="form-msg note" id="form-msg" role="status"></div>
+    </form>
+    <script>
+      document.getElementById('contact-form').addEventListener('submit', function (event) {
+        event.preventDefault();
+        var msg = document.getElementById('form-msg');
+        msg.textContent = 'Thank you — but please note this form is not connected to an inbox yet, so your message has not been sent or delivered anywhere. If your message is about a problem with your own FESCO bill, please contact FESCO directly on helpline 118.';
+        msg.classList.add('show');
+      });
+    </script>
+
+    <h2>Frequently asked questions</h2>
+    <div class="faq">
+      <h3>Can this website fix a problem with my FESCO bill?</h3>
+      <p>No. This website cannot access your bill, change it or fix it. For a wrong amount, a missing bill, a complaint, a new connection or load shedding, contact FESCO on helpline 118 (toll-free) or through fesco.com.pk.</p>
+      <h3>What is the FESCO helpline number?</h3>
+      <p>The FESCO helpline is 118 (toll-free). You can also use the official FESCO website at fesco.com.pk and the complaints portal at ccms.pitc.com.pk.</p>
+      <h3>Does the contact form on this page send my message?</h3>
+      <p>No. The form on this page is not connected to an inbox yet, so it does not send or deliver your message anywhere. Do not send bill problems through it — contact FESCO on 118 instead.</p>
+    </div>
+
+    <p><a href="../">Check your FESCO bill</a> · <a href="../fesco-complaint/">How to file a FESCO complaint</a> · <a href="../about/">About this website</a></p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <h3>FESCO Bill Online</h3>
+        <p>An independent guide to checking, understanding and paying FESCO electricity bills in Pakistan. We are not affiliated with FESCO, PITC or NEPRA. Your real bill is always shown on the official PITC portal.</p>
+      </div>
+      <div>
+        <h3>Tools &amp; guides</h3>
+        <ul>
+          <li><a href="../">Check FESCO bill</a></li>
+          <li><a href="../fesco-bill-calculator/">Bill calculator</a></li>
+          <li><a href="../fesco-unit-rate/">Unit rate</a></li>
+          <li><a href="../fesco-duplicate-bill/">Duplicate bill</a></li>
+          <li><a href="../fesco-bill-payment/">Bill payment</a></li>
+          <li><a href="../fesco-previous-bill/">Previous bill</a></li>
+          <li><a href="../how-to-read-fesco-bill/">How to read your bill</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>More</h3>
+        <ul>
+          <li><a href="../fesco-new-connection/">New connection</a></li>
+          <li><a href="../fesco-bill-sms-service/">SMS service</a></li>
+          <li><a href="../fesco-complaint/">Complaint</a></li>
+          <li><a href="../fesco-load-shedding-schedule/">Load shedding schedule</a></li>
+          <li><a href="../about/">About</a></li>
+          <li><a href="../contact/">Contact</a></li>
+          <li><a href="../privacy-policy/">Privacy policy</a></li>
+          <li><a href="../disclaimer/">Disclaimer</a></li>
+          <li><a href="../terms/">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 FESCO Bill Online. All rights reserved.</p>
+      <p>This website is not affiliated with, endorsed by or connected to Faisalabad Electric Supply Company (FESCO), the Power Information Technology Company (PITC) or NEPRA. Bill amounts shown by our calculator are estimates only — your official bill is the one issued on the PITC portal.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

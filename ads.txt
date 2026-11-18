@@ -1,0 +1,12 @@
+# ads.txt — FESCO Bill Online
+# ---------------------------------------------------------------
+# This file is a PLACEHOLDER. After Google AdSense approves this site,
+# replace the commented line below with your real publisher ID:
+#
+#   google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
+#
+# (Replace pub-0000000000000000 with the publisher ID AdSense gives you.)
+# No publisher ID is invented here — do not publish this file with a
+# made-up ID, or AdSense will reject the site.
+# ---------------------------------------------------------------
+# google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0

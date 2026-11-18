@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FESCO Bill Calculator November 2026 — Estimate Your Electricity Bill</title>
+<meta name="description" content="Free FESCO bill calculator for November 2026. Enter your units and see the full breakdown — energy charge, fixed charge, FPA, FC surcharge and 18% GST — using the current NEPRA tariff (S.R.O. 279(I)/2026).">
+<link rel="canonical" href="https://checkfescobill.pk/fesco-bill-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="FESCO Bill Calculator November 2026 — Estimate Your Electricity Bill">
+<meta property="og:description" content="Estimate your FESCO bill from units used — protected, unprotected, lifeline and TOU rates with FPA, surcharge and 18% GST. Current NEPRA tariff S.R.O. 279(I)/2026.">
+<meta property="og:url" content="https://checkfescobill.pk/fesco-bill-calculator/">
+<link rel="stylesheet" href="../assets/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://checkfescobill.pk/" },
+        { "@type": "ListItem", "position": 2, "name": "FESCO Bill Calculator", "item": "https://checkfescobill.pk/fesco-bill-calculator/" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How is a FESCO bill calculated?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Your bill is: energy charge (units × your slab rate) + fixed charge (per kW of sanctioned load) + fuel price adjustment (FPA, per unit) + quarterly tariff adjustment (QTA, per unit) + financing cost surcharge (Rs 3.23 per unit, Rs 1.43 for protected consumers). GST at 18% is charged on that subtotal. Unprotected consumers pay one slab rate on all units, so crossing into a higher slab raises the rate on the whole bill." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the FESCO unit rate in November 2026?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Under NEPRA S.R.O. 279(I)/2026, lifeline is Rs 3.95 (1–50 units) and Rs 7.74 (51–100 units); protected is Rs 10.54 (1–100) and Rs 13.01 (101–200); unprotected ranges from Rs 22.44 (1–100) to Rs 47.20 (700+ units). TOU peak is Rs 46.85 and off-peak Rs 34.53." }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is my FESCO bill higher than the calculator shows?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Common reasons: your sanctioned load is higher than the 1 kW default (fixed charge rises with load), the FPA on your bill month differs from the default, you have arrears or a late-payment surcharge from a previous bill, or you crossed into a higher slab. Check the worked examples and the tariff table on this page, then compare each line with your actual bill using our guide to reading your FESCO bill." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I check FESCO bill by CNIC?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. FESCO bills cannot be checked by CNIC number, name, address or meter number. The official PITC portal only accepts a 14-digit Reference Number or a 10-digit Customer ID. Use the bill checker on our homepage to validate your number, then check it on the official portal." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is FPA on a FESCO bill?",
+          "acceptedAnswer": { "@type": "Answer", "text": "FPA is the fuel price adjustment — a per-unit charge that changes every month with fuel costs. For example, the FPA for August 2026 consumption was +Rs 1.1086 per unit. The calculator defaults to that latest verified rate; change it to the FPA printed on your own bill for a closer estimate." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this calculator the same as my official bill?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. This calculator gives an estimate using the notified tariff. Your official bill is issued by FESCO through the PITC portal and may differ because of your exact sanctioned load, the FPA and QTA of your billing month, arrears, or adjustments. Always confirm the final amount on your official bill before paying." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="../" aria-label="FESCO Bill Online — home">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 2 4.5 13.5H11L9.5 22 19 10h-6.5L13 2Z" fill="#fff"/></svg>
+      </span>
+      <span class="logo-text">FESCO Bill Online<small>Check • Calculate • Pay</small></span>
+    </a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="../">Home</a>
+      <a href="../fesco-bill-calculator/" class="active">Calculator</a>
+      <a href="../fesco-unit-rate/">Unit Rate</a>
+      <a href="../fesco-bill-payment/">Payment</a>
+      <a href="../fesco-duplicate-bill/">Duplicate Bill</a>
+      <a href="../fesco-complaint/">Complaint</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <p class="breadcrumb"><a href="../">Home</a> › FESCO Bill Calculator</p>
+    <h1>FESCO Bill Calculator — November 2026</h1>
+    <p class="lede">Estimate your FESCO electricity bill before it arrives. Enter your units, pick your consumer type, and see the full breakdown — energy charge, fixed charge, FPA, quarterly adjustment, financing cost surcharge and 18% GST.</p>
+    <p class="updated">Updated: November 2026 — rates verified against NEPRA S.R.O. 279(I)/2026. Last reviewed: November 2026.</p>
+
+    <form class="calc-form" id="calc-form">
+      <div class="field">
+        <label>Consumer type</label>
+        <div class="radio-row">
+          <label><input type="radio" name="category" value="unprotected" checked> Unprotected</label>
+          <label><input type="radio" name="category" value="protected"> Protected</label>
+          <label><input type="radio" name="category" value="lifeline"> Lifeline</label>
+          <label><input type="radio" name="category" value="tou"> TOU</label>
+        </div>
+        <span class="hint" id="category-hint">Unprotected: one slab rate applies to ALL units — crossing a slab raises the rate on your whole bill.</span>
+      </div>
+      <div class="field" id="units-field">
+        <label for="units">Units consumed (kWh)</label>
+        <input type="number" id="units" min="0" max="10000" step="1" value="200" required>
+      </div>
+      <div id="tou-fields" style="display:none">
+        <div class="field">
+          <label for="peak-units">Peak units (6 PM – 10 PM)</label>
+          <input type="number" id="peak-units" min="0" max="10000" step="1" value="60">
+        </div>
+        <div class="field">
+          <label for="offpeak-units">Off-peak units (all other hours)</label>
+          <input type="number" id="offpeak-units" min="0" max="10000" step="1" value="140">
+        </div>
+      </div>
+      <div class="field">
+        <label for="load">Sanctioned load (kW) <span class="hint">— printed on your bill; usually 1–5 kW for homes</span></label>
+        <input type="number" id="load" min="0" max="100" step="0.5" value="1">
+      </div>
+      <div class="field">
+        <label for="fpa">Fuel price adjustment — FPA (Rs per unit) <span class="hint">— default is the latest verified rate, +Rs 1.1086 (August 2026 consumption)</span></label>
+        <input type="number" id="fpa" min="-10" max="10" step="0.0001" value="1.1086">
+      </div>
+      <div class="field">
+        <label for="qta">Quarterly tariff adjustment — QTA (Rs per unit) <span class="hint">— varies by quarter; check your bill's QTA line, or leave 0 if unsure</span></label>
+        <input type="number" id="qta" min="-10" max="10" step="0.01" value="0">
+      </div>
+      <button class="btn btn-block" type="submit">Calculate My Bill</button>
+    </form>
+
+    <div class="calc-result" id="calc-result" aria-live="polite">
+      <h2>Your estimated bill</h2>
+      <p id="res-slab"></p>
+      <div class="table-wrap">
+        <table class="bill-lines">
+          <tbody id="res-lines"></tbody>
+        </table>
+      </div>
+      <p class="effective" id="res-effective"></p>
+      <div class="warning" id="slab-warning" style="display:none"><p></p></div>
+      <p class="checker-note">This is an estimate based on the notified tariff. Your official bill may differ — see why below. Confirm the final amount on the official PITC portal before paying. <a href="../">Check your actual bill →</a></p>
+    </div>
+
+    <h2>How the calculator works</h2>
+    <p>Your FESCO bill is built from five parts, then GST is added on the subtotal:</p>
+    <ol>
+      <li><strong>Energy charge</strong> — your units × the rate for your slab.</li>
+      <li><strong>Fixed charge</strong> — a monthly charge per kW of your sanctioned load (the load printed on your bill).</li>
+      <li><strong>FPA (fuel price adjustment)</strong> — a per-unit charge that changes every month with fuel costs.</li>
+      <li><strong>QTA (quarterly tariff adjustment)</strong> — a per-unit adjustment that changes every quarter.</li>
+      <li><strong>FC surcharge (financing cost surcharge)</strong> — Rs 3.23 per unit (Rs 1.43 for protected consumers; lifeline consumers are exempt).</li>
+    </ol>
+    <p>Then <strong>GST at 18%</strong> is charged on the subtotal of all five. That is why the “effective rate per unit” on your bill is always much higher than the headline slab rate — for example, an unprotected consumer at 350 units pays Rs 36.46 per unit in energy charges but about Rs 49.74 per unit all-in.</p>
+
+    <div class="warning">
+      <p><strong>The slab-crossing effect:</strong> FESCO's domestic tariff is a single-slab tariff. If you use 350 units, all 350 units are charged at the 301–400 slab rate (Rs 36.46) — not the first 100 at one rate and the rest at another. Using just a few units over a slab boundary (for example 201 instead of 200) raises the rate on your entire consumption, which can add hundreds of rupees at once. Staying under a boundary is the single biggest way to cut your bill.</p>
+    </div>
+
+    <h2>Worked examples (November 2026 rates)</h2>
+    <p>These examples use a 1 kW sanctioned load, FPA +Rs 1.1086 and QTA Rs 0. They were calculated with the same formula as the calculator above.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Example</th><th class="num">Energy</th><th class="num">Fixed</th><th class="num">FPA + FC surcharge</th><th class="num">GST 18%</th><th class="num">Total</th><th class="num">Per unit</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>100 units — Protected</strong><br>100 × Rs 10.54</td><td class="num">1,054.00</td><td class="num">200.00</td><td class="num">253.86</td><td class="num">271.41</td><td class="num"><strong>1,779.27</strong></td><td class="num">17.79</td></tr>
+          <tr><td><strong>350 units — Unprotected</strong><br>350 × Rs 36.46</td><td class="num">12,761.00</td><td class="num">475.00</td><td class="num">1,518.51</td><td class="num">2,655.81</td><td class="num"><strong>17,410.32</strong></td><td class="num">49.74</td></tr>
+          <tr><td><strong>800 units — Unprotected</strong><br>800 × Rs 47.20</td><td class="num">37,760.00</td><td class="num">675.00</td><td class="num">3,470.88</td><td class="num">7,543.06</td><td class="num"><strong>49,448.94</strong></td><td class="num">61.81</td></tr>
+          <tr><td><strong>45 units — Lifeline</strong><br>45 × Rs 3.95</td><td class="num">177.75</td><td class="num">0.00</td><td class="num">49.89</td><td class="num">40.98</td><td class="num"><strong>268.62</strong></td><td class="num">5.97</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Notice how the effective per-unit cost climbs: a protected consumer at 100 units pays about Rs 17.79 per unit all-in, while an unprotected consumer at 800 units pays about Rs 61.81 per unit all-in — even though both are “domestic” consumers. The slab and the fixed charge make the difference.</p>
+
+    <h2>Full FESCO tariff table — S.R.O. 279(I)/2026</h2>
+    <p>Domestic energy rates notified by NEPRA in S.R.O. 279(I)/2026, effective 12 February 2026. Fixed charges are per kW of sanctioned load per month. Your bill's “Fixed Charges” line shows the exact amount for your sanctioned load.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Category</th><th>Units</th><th class="num">Energy (Rs/unit)</th><th class="num">Fixed (Rs/kW)</th><th class="num">FC surcharge (Rs/unit)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Lifeline</td><td>1–50</td><td class="num">3.95</td><td class="num">0</td><td class="num">0</td></tr>
+          <tr><td>Lifeline</td><td>51–100</td><td class="num">7.74</td><td class="num">0</td><td class="num">0</td></tr>
+          <tr><td>Protected</td><td>1–100</td><td class="num">10.54</td><td class="num">200</td><td class="num">1.43</td></tr>
+          <tr><td>Protected</td><td>101–200</td><td class="num">13.01</td><td class="num">300</td><td class="num">1.43</td></tr>
+          <tr><td>Unprotected</td><td>1–100</td><td class="num">22.44</td><td class="num">275</td><td class="num">3.23</td></tr>
+          <tr><td>Unprotected</td><td>101–200</td><td class="num">28.91</td><td class="num">300</td><td class="num">3.23</td></tr>
+          <tr><td>Unprotected</td><td>201–300</td><td class="num">33.10</td><td class="num">400</td><td class="num">3.23</td></tr>
+          <tr><td>Unprotected</td><td>301–400</td><td class="num">36.46</td><td class="num">475</td><td class="num">3.23</td></tr>
+          <tr><td>Unprotected</td><td>401–500</td><td class="num">38.95</td><td class="num">550</td><td class="num">3.23</td></tr>
+          <tr><td>Unprotected</td><td>501–600</td><td class="num">40.22</td><td class="num">600</td><td class="num">3.23</td></tr>
+          <tr><td>Unprotected</td><td>601–700</td><td class="num">41.85</td><td class="num">650</td><td class="num">3.23</td></tr>
+          <tr><td>Unprotected</td><td>700+</td><td class="num">47.20</td><td class="num">675</td><td class="num">3.23</td></tr>
+          <tr><td>TOU — peak (6–10 PM)</td><td>—</td><td class="num">46.85</td><td class="num">675</td><td class="num">3.23</td></tr>
+          <tr><td>TOU — off-peak</td><td>—</td><td class="num">34.53</td><td class="num">675</td><td class="num">3.23</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Protected vs unprotected:</strong> you are “protected” if you used 200 units or less in each of the last 6 consecutive months. One month over 200 units and you lose protected status — and your rate roughly doubles. <strong>Lifeline</strong> applies to very low usage (up to 100 units) with no fixed charge. See the full explanation on the <a href="../fesco-unit-rate/">FESCO unit rate page</a>.</p>
+    <p><strong>Source:</strong> NEPRA S.R.O. 279(I)/2026 (domestic tariff, effective 12 February 2026). FPA and QTA change regularly — the values on this page are the latest verified at the time of writing (November 2026). Since July 2025, the Rs 35 PTV fee and 1.5% electricity duty no longer appear on bills.</p>
+
+    <h2>Why your actual bill may differ</h2>
+    <ul>
+      <li><strong>Sanctioned load:</strong> the calculator defaults to 1 kW. If your sanctioned load is 2 or 3 kW, your fixed charge doubles or triples.</li>
+      <li><strong>FPA and QTA of your billing month:</strong> both change regularly. Copy the exact figures from your own bill for the closest estimate.</li>
+      <li><strong>Arrears and late payment surcharge:</strong> unpaid amounts from earlier bills carry forward with a surcharge — the calculator does not include them.</li>
+      <li><strong>Meter reading errors:</strong> if the reading on your bill is higher than your actual meter, your bill is wrong. Compare the readings and <a href="../fesco-complaint/">file a complaint</a> if they do not match.</li>
+    </ul>
+
+    <h2>Frequently asked questions</h2>
+    <div class="faq">
+      <h3>How is a FESCO bill calculated?</h3>
+      <p>Energy charge (units × slab rate) + fixed charge (per kW of sanctioned load) + FPA + QTA + financing cost surcharge, then 18% GST on the subtotal. Unprotected consumers pay one slab rate on all units.</p>
+      <h3>What is the FESCO unit rate in November 2026?</h3>
+      <p>Lifeline Rs 3.95 (1–50) and Rs 7.74 (51–100); protected Rs 10.54 (1–100) and Rs 13.01 (101–200); unprotected Rs 22.44 to Rs 47.20 depending on slab; TOU peak Rs 46.85, off-peak Rs 34.53.</p>
+      <h3>Why is my FESCO bill higher than the calculator shows?</h3>
+      <p>Usually a higher sanctioned load, a different FPA for your billing month, arrears or late-payment surcharge, or a slab crossing. Compare each line with your actual bill using our <a href="../how-to-read-fesco-bill/">guide to reading your FESCO bill</a>.</p>
+      <h3>Can I check FESCO bill by CNIC?</h3>
+      <p>No. FESCO bills cannot be checked by CNIC number, name, address or meter number. The official PITC portal only accepts a 14-digit Reference Number or a 10-digit Customer ID. Use the <a href="../">bill checker on our homepage</a> to validate your number, then check it on the official portal.</p>
+      <h3>What is FPA on a FESCO bill?</h3>
+      <p>FPA is the fuel price adjustment — a per-unit charge that changes every month with fuel costs. The FPA for August 2026 consumption was +Rs 1.1086 per unit. The calculator defaults to that latest verified rate; change it to the FPA printed on your own bill for a closer estimate.</p>
+      <h3>Is this calculator the same as my official bill?</h3>
+      <p>No — it is an estimate using the notified tariff. Your official bill is issued by FESCO through the PITC portal and may differ because of your exact sanctioned load, the FPA and QTA of your billing month, arrears or adjustments. Always confirm the final amount on your official bill before paying.</p>
+    </div>
+
+    <div class="related">
+      <h2>Related guides</h2>
+      <ul>
+        <li><a href="../">Check your FESCO bill online (14-digit reference number)</a></li>
+        <li><a href="../fesco-unit-rate/">FESCO unit rate and tariff — November 2026</a></li>
+        <li><a href="../how-to-read-fesco-bill/">How to read your FESCO bill, line by line</a></li>
+        <li><a href="../fesco-bill-payment/">How to pay your FESCO bill online</a></li>
+        <li><a href="../fesco-duplicate-bill/">FESCO duplicate bill download and print</a></li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <h3>FESCO Bill Online</h3>
+        <p>An independent guide to checking, understanding and paying FESCO electricity bills in Pakistan. We are not affiliated with FESCO, PITC or NEPRA. Your real bill is always shown on the official PITC portal.</p>
+      </div>
+      <div>
+        <h3>Tools &amp; guides</h3>
+        <ul>
+          <li><a href="../">Check FESCO bill</a></li>
+          <li><a href="../fesco-bill-calculator/">Bill calculator</a></li>
+          <li><a href="../fesco-unit-rate/">Unit rate</a></li>
+          <li><a href="../fesco-duplicate-bill/">Duplicate bill</a></li>
+          <li><a href="../fesco-bill-payment/">Bill payment</a></li>
+          <li><a href="../fesco-previous-bill/">Previous bill</a></li>
+          <li><a href="../how-to-read-fesco-bill/">How to read your bill</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>More</h3>
+        <ul>
+          <li><a href="../fesco-new-connection/">New connection</a></li>
+          <li><a href="../fesco-bill-sms-service/">SMS service</a></li>
+          <li><a href="../fesco-complaint/">Complaint</a></li>
+          <li><a href="../fesco-load-shedding-schedule/">Load shedding schedule</a></li>
+          <li><a href="../about/">About</a></li>
+          <li><a href="../contact/">Contact</a></li>
+          <li><a href="../privacy-policy/">Privacy policy</a></li>
+          <li><a href="../disclaimer/">Disclaimer</a></li>
+          <li><a href="../terms/">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 FESCO Bill Online. All rights reserved.</p>
+      <p>This website is not affiliated with, endorsed by or connected to Faisalabad Electric Supply Company (FESCO), the Power Information Technology Company (PITC) or NEPRA. Bill amounts shown by our calculator are estimates only — your official bill is the one issued on the PITC portal.</p>
+    </div>
+  </div>
+</footer>
+<script src="../assets/calculator.js"></script>
+</body>
+</html>
