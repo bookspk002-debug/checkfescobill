@@ -1,13 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="FESCO Bill Online logo">
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#14543f"/>
-      <stop offset="1" stop-color="#0f3b2e"/>
-    </linearGradient>
-  </defs>
-  <path d="M32 3 57 10v22c0 16-10 25.5-25 29C17 57.5 7 48 7 32V10L32 3Z" fill="url(#g)" stroke="#e8b931" stroke-width="2.5" stroke-linejoin="round"/>
-  <path d="M36 11 20 34h9l-3 15 16-23h-9l3-15Z" fill="#fff"/>
-  <g stroke="#e8b931" stroke-width="2.5" stroke-linecap="round">
-    <line x1="24" y1="54" x2="40" y2="54"/>
-  </g>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="#FF6B1A"/>
+  <rect x="21" y="12" width="22" height="40" rx="3" fill="#fff"/>
+  <path d="M33 17 26 30h5l-2 9 8-13h-5l1-9Z" fill="#0B6B3A"/>
+  <rect x="25" y="41" width="14" height="2.5" rx="1.25" fill="#FFD23F"/>
+  <rect x="25" y="46" width="10" height="2.5" rx="1.25" fill="#E8DDC8"/>
 </svg>
