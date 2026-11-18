@@ -36,7 +36,7 @@
       "step": [
         { "@type": "HowToStep", "name": "Find your reference number", "text": "Take any old FESCO bill and look at the 14-digit Reference Number printed at the top-left. If you do not have a bill, use your 10-digit Customer ID." },
         { "@type": "HowToStep", "name": "Enter it above", "text": "Type the 14-digit reference number (or 10-digit customer ID) into the checker on this page. The checker only validates the format on your own device — your number is never sent to our servers." },
-        { "@type": "HowToStep", "name": "Open the official portal", "text": "Click 'Check Bill on Official Portal'. The official PITC portal opens in a new tab. Enter the same reference number there and solve the image captcha." },
+        { "@type": "HowToStep", "name": "Open your bill directly", "text": "Click 'Open General Bill'. Your bill opens directly on the official PITC portal in a new tab — no need to type the number again, and no captcha." },
         { "@type": "HowToStep", "name": "View, download or print", "text": "Your latest bill appears on the portal with the amount due and due date. You can download or print a duplicate copy and see your last 12 months of bills." }
       ]
     },
@@ -71,7 +71,7 @@
         {
           "@type": "Question",
           "name": "Can I download a duplicate FESCO bill?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. After entering your reference number on the official PITC portal, your latest bill opens with print and download options. You can save it as a PDF or print it — it works as a duplicate bill for payment at any bank or mobile wallet." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Enter your reference number in the checker above and click 'Open General Bill' — your latest bill opens directly on the official PITC portal with print and download options. You can save it as a PDF or print it — it works as a duplicate bill for payment at any bank or mobile wallet." }
         }
       ]
     }
@@ -106,7 +106,7 @@
 
     <div class="checker" id="checker">
       <h2>Check your FESCO bill now</h2>
-      <p>Enter your reference number below. We only check the format on your own device — your number is never sent to or stored on our servers.</p>
+      <p>Enter your reference number below and press Check Bill — your bill opens directly on the official PITC portal in a new tab. We only check the format on your own device — your number is never sent to or stored on our servers.</p>
       <form class="checker-form" id="checker-form" novalidate>
         <div class="grow">
           <label for="ref-input">14-digit Reference No. or 10-digit Customer ID</label>
@@ -118,9 +118,10 @@
       <div class="checker-result" id="checker-result">
         <p><strong>Your number looks valid.</strong></p>
         <p class="ref-display" id="ref-display"></p>
-        <p>Click below to open the official PITC bill portal in a new tab. Enter the same number there and solve the image captcha — your latest bill will appear with the amount due and the due date.</p>
+        <p>Click below and your bill opens directly on the official PITC portal in a new tab — no need to type the number again, and no captcha. Your latest bill appears with the amount due and the due date.</p>
         <div class="result-actions">
-          <a class="btn" id="open-portal" href="https://bill.pitc.com.pk/fescobill" target="_blank" rel="noopener">Check Bill on Official Portal →</a>
+          <button class="btn" type="button" id="open-general">Open General Bill →</button>
+          <button class="btn btn-secondary" type="button" id="open-industrial">Open Industrial Bill</button>
           <button class="btn btn-secondary" type="button" id="copy-ref">Copy number</button>
         </div>
         <label class="save-row">
@@ -141,12 +142,12 @@
     <ol class="steps">
       <li><strong>Find your reference number</strong>Take any old FESCO bill and look at the 14-digit Reference Number at the top-left, just below the FESCO logo. No old bill? Use the 10-digit Customer ID instead.</li>
       <li><strong>Enter it in the checker above</strong>Type the number and press Check Bill. The checker only validates the format on your own device — nothing is sent to us.</li>
-      <li><strong>Open the official PITC portal</strong>Click “Check Bill on Official Portal”. The portal opens in a new tab at bill.pitc.com.pk/fescobill. Enter the same reference number there and solve the image captcha.</li>
+      <li><strong>Open your bill directly</strong>Click “Open General Bill”. Your bill opens directly on the official PITC portal in a new tab — no need to type the number again, and no captcha.</li>
       <li><strong>View, download or print</strong>Your latest bill appears with the amount due, the due date and your last 12 months of billing history. You can print it or save it as a PDF — that is your duplicate bill.</li>
     </ol>
 
     <div class="note">
-      <p><strong>Note on U and R:</strong> some FESCO bills show a <strong>U</strong> (urban) or <strong>R</strong> (rural) letter after the reference number. The official portal has a separate U/R selector — choose the letter shown on your bill. Our checker accepts the number with or without the letter.</p>
+      <p><strong>Note on U and R:</strong> some FESCO bills show a <strong>U</strong> (urban) or <strong>R</strong> (rural) letter after the reference number. Our checker accepts the number with or without the letter — the bill opens directly either way.</p>
     </div>
 
     <h2>What you need — and what does not work</h2>
@@ -239,7 +240,7 @@
       <h3>What if my FESCO bill is wrong or too high?</h3>
       <p>Compare the meter reading on the bill with your physical meter first. If they do not match, call 118 (toll-free) or lodge a complaint at ccms.pitc.com.pk. You can also visit your nearest FESCO subdivision office with the bill and your CNIC.</p>
       <h3>Can I download a duplicate FESCO bill?</h3>
-      <p>Yes. After entering your reference number on the official PITC portal, your latest bill opens with print and download options. Save it as a PDF or print it — it works as a duplicate bill for payment.</p>
+      <p>Yes. Enter your reference number in the checker above and click “Open General Bill” — your latest bill opens directly on the official PITC portal with print and download options. Save it as a PDF or print it — it works as a duplicate bill for payment.</p>
     </div>
 
     <div class="related">
@@ -322,11 +323,35 @@
     var saved=localStorage.getItem(KEY);
     if(saved){input.value=saved;savedNote.style.display='block';}
   }catch(e){}
+  // Direct bill open: POST the number straight to the official PITC portal
+  // (same mechanism other FESCO bill sites use). General = domestic/commercial,
+  // Industrial = industrial connections. No captcha on this route, and the
+  // number is never sent to our servers — it goes only to bill.pitc.com.pk.
+  function openBill(kind,v){
+    v=v||validate(input.value);
+    if(!v.ok){
+      err.textContent='That does not look right. Enter the 14-digit Reference Number from the top-left of your bill (or the 10-digit Customer ID). You can include the U or R shown on your bill.';
+      err.classList.add('show');
+      result.classList.remove('show');
+      input.focus();
+      return;
+    }
+    var num=v.num+(v.suffix?v.suffix:'');
+    var param=(v.num.length===10)?'appno':'refno';
+    var url='https://bill.pitc.com.pk/fescobill/'+kind+'?'+param+'='+encodeURIComponent(num);
+    var f=document.createElement('form');
+    f.method='post';f.action=url;f.target='_blank';f.rel='noopener';
+    document.body.appendChild(f);f.submit();document.body.removeChild(f);
+  }
+  var openGeneral=document.getElementById('open-general');
+  var openIndustrial=document.getElementById('open-industrial');
+  if(openGeneral){openGeneral.addEventListener('click',function(){openBill('general');});}
+  if(openIndustrial){openIndustrial.addEventListener('click',function(){openBill('industrial');});}
   form.addEventListener('submit',function(e){
     e.preventDefault();
     var v=validate(input.value);
     if(!v.ok){
-      err.textContent='That does not look right. Enter the 14-digit Reference Number from the top-left of your bill (or the 10-digit Customer ID). You can include the U or R shown on your bill — the portal asks for it separately.';
+      err.textContent='That does not look right. Enter the 14-digit Reference Number from the top-left of your bill (or the 10-digit Customer ID). You can include the U or R shown on your bill.';
       err.classList.add('show');
       result.classList.remove('show');
       input.focus();
@@ -338,6 +363,7 @@
     if(saveBox.checked){
       try{localStorage.setItem(KEY,v.num+(v.suffix?v.suffix:''));savedNote.style.display='block';}catch(e){}
     }
+    openBill('general',v);
   });
   copyBtn.addEventListener('click',function(){
     var t=refOut.textContent.replace(/^[^:]+:\s*/,'');
